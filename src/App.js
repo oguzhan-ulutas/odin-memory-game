@@ -6,7 +6,7 @@ import GameBoard from "./components/03-GameBoard/01-GameBoard";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Header />
       <GameBoard />
       <Footer />

@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 code {
@@ -16,4 +18,45 @@ code {
   font-size: 10px;
   margin: 0px;
   padding: 0px;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 10rem 1fr 2rem;
+  padding: 1rem;
+  min-width: 100vw;
+  min-height: 100vh;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  margin: 0;
+  padding: 1px 5rem 1px;
+  box-shadow: 0px 5px 5px 5px rgb(118, 127, 166, 0.5);
+}
+.score {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.game-board {
+}
+
+.footer {
+  align-self: center;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+  height: 2rem;
 }
