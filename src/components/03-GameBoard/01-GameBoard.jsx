@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 const GameBoard = (props) => {
-  const { getImgs } = props;
+  const {} = props;
+
   return <div className="game-board">GameBoard</div>;
 };
 

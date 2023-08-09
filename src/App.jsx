@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Footer from "./components/01-Footer/01-Footer";
 import Header from "./components/02-Header/01-Header";
@@ -8,28 +8,31 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [cardNumber, setCardNumber] = useState(3);
+  const [imgData, setImgData] = useState({});
 
+  //gets imgs from giphy and returns an img array
   const getImgs = async () => {
-    const apiKey = "PZ26p8eWS4ZGIZnpoc8eQg7IizuV9qJVY";
+    const apiKey = "PZ26p8eWS4ZGIZnpoc8eQg7IizuV9qJV";
     const apiUrl = "https://api.giphy.com/v1/gifs/search";
+
     try {
       const response = await fetch(
-        `${apiUrl}?api_key${apiKey}&limit=${cardNumber}&q=sailboat`,
-        {
-          mode: "cors",
-        }
+        `${apiUrl}?api_key=${apiKey}&limit=${cardNumber}&q=sailboat`
       );
-      const imgData = await response.data;
+      const imgData = await response.json();
 
-      return imgData;
+      setImgData(imgData);
+
+      return;
     } catch {
       alert("Server is busy, please try again later");
     }
   };
+
   return (
     <div className="app">
       <Header score={score} bestScore={bestScore} />
-      <GameBoard getImgs={getImgs} />
+      <GameBoard />
       <Footer />
     </div>
   );
