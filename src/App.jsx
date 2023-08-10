@@ -8,7 +8,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [cardNumber, setCardNumber] = useState(3);
-  const [imgData, setImgData] = useState({});
+  const [imgData, setImgData] = useState([]);
 
   //gets imgs from giphy and returns an img array
   const getImgs = async () => {
@@ -19,9 +19,9 @@ function App() {
       const response = await fetch(
         `${apiUrl}?api_key=${apiKey}&limit=${cardNumber}&q=sailboat`
       );
-      const imgData = await response.json();
+      const data = await response.json();
 
-      setImgData(imgData);
+      setImgData(data.data);
 
       return;
     } catch {
@@ -29,10 +29,14 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    getImgs();
+  }, [cardNumber]);
+
   return (
     <div className="app">
       <Header score={score} bestScore={bestScore} />
-      <GameBoard />
+      <GameBoard imgData={imgData} />
       <Footer />
     </div>
   );

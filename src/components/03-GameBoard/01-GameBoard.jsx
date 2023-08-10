@@ -1,9 +1,22 @@
 import React, { useEffect } from "react";
 
 const GameBoard = (props) => {
-  const {} = props;
+  const { imgData } = props;
 
-  return <div className="game-board">GameBoard</div>;
+  const renderedImgData = imgData.map((item) => {
+    return (
+      <div key={item.id}>
+        <img src={item.images.original.url} alt={item.title} />
+        <p>{item.title}</p>
+      </div>
+    );
+  });
+
+  return (
+    <div className="game-board">
+      <div className="cards">{renderedImgData}</div>
+    </div>
+  );
 };
 
 export default GameBoard;
