@@ -68,13 +68,15 @@ h1 {
 
 .cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 3vw;
   flex-wrap: wrap;
   max-width: 100vw;
   font-size: 1.5rem;
   padding: 5vw;
+  margin: 4rem;
+  box-shadow: 0px 5px 5px 5px rgb(118, 127, 166, 0.5);
 }
 .cards div,
 .cards img {
@@ -97,4 +99,8 @@ h1 {
   to {
     transform: rotateZ(0deg);
   }
+}
+
+.cards div {
+  box-shadow: 0px 5px 5px 5px rgb(118, 127, 166, 0.5);
 }
