@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Header = (props) => {
-  const { score, bestScore, level } = props;
+  const { score, bestScore, level, loadBestScore } = props;
+
+  useEffect(() => {
+    loadBestScore();
+  }, []);
+
   return (
     <div className="header">
       <h1>Memory Game</h1>

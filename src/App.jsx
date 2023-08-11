@@ -49,6 +49,7 @@ function App() {
     const cardID = e.target.className;
     if (scoreArr.includes(cardID)) {
       alert("Game over. Please start again.");
+      storeBestScore();
       setTimeout(location.reload(), 1000);
     } else if (score <= 3) {
       // Adding card to array.
@@ -144,9 +145,41 @@ function App() {
     }
   };
 
+  // Local storage functions for bestScore
+  const storeBestScore = () => {
+    localStorage.setItem("bestScore", JSON.stringify(bestScore));
+  };
+
+  const getBestScore = () => {
+    setBestScore(JSON.parse(localStorage.getItem("bestScore")));
+  };
+
+  // Loads toDos and populates the screen if there is any toDo
+  const loadBestScore = () => {
+    if (localStorage.getItem("bestScore") !== null) {
+      getBestScore();
+    }
+  };
+
+  const handleBestScore = () => {
+    if (score > bestScore) {
+      setBestScore(score);
+      storeBestScore();
+    }
+  };
+
+  useEffect(() => {
+    handleBestScore();
+  }, [score]);
+
   return (
     <div className="app">
-      <Header score={score} bestScore={bestScore} level={level} />
+      <Header
+        score={score}
+        bestScore={bestScore}
+        level={level}
+        loadBestScore={loadBestScore}
+      />
       <GameBoard imgData={imgData} handleScore={handleScore} />
       <Footer />
     </div>
