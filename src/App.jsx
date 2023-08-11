@@ -7,6 +7,7 @@ import GameBoard from "./components/03-GameBoard/01-GameBoard";
 function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [level, setLevel] = useState(1);
   const [cardNumber, setCardNumber] = useState(3);
   const [imgData, setImgData] = useState([]);
 
@@ -33,9 +34,11 @@ function App() {
     getImgs();
   }, [cardNumber]);
 
+  const handleScore = () => {};
+
   return (
     <div className="app">
-      <Header score={score} bestScore={bestScore} />
+      <Header score={score} bestScore={bestScore} level={level} />
       <GameBoard imgData={imgData} />
       <Footer />
     </div>

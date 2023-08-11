@@ -5,7 +5,7 @@ const GameBoard = (props) => {
 
   const renderedImgData = imgData.map((item) => {
     return (
-      <div key={item.id}>
+      <div key={item.id} className={item.id}>
         <img src={item.images.original.url} alt={item.title} />
         <p>{item.title}</p>
       </div>
