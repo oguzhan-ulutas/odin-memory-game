@@ -2,7 +2,7 @@
 
 [The Odin Project exercise](https://www.theodinproject.com/lessons/node-path-react-new-memory-card) to learn React.
 
-[Live Preview](https://main--stupendous-puffpuff-952be1.netlify.app/)
+[Live Preview](https://memory-game-oguzhan.netlify.app/)
 
 **What I learned with this project;**
 
