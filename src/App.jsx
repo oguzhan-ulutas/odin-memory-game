@@ -10,6 +10,7 @@ function App() {
   const [level, setLevel] = useState(1);
   const [cardNumber, setCardNumber] = useState(3);
   const [imgData, setImgData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //gets imgs from giphy and returns an img array
   const getImgs = async () => {
@@ -23,6 +24,7 @@ function App() {
       const data = await response.json();
 
       setImgData(data.data);
+      setTimeout(() => setLoading(false), 1000);
 
       return;
     } catch {
@@ -58,6 +60,7 @@ function App() {
       setScore(score + 1);
       // Setting up next level if sroce reachs 3.
       if (score === 2) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(2);
         setCardNumber(5);
@@ -70,6 +73,7 @@ function App() {
       console.log(score);
 
       if (score === 7) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(3);
         setCardNumber(7);
@@ -80,6 +84,7 @@ function App() {
       setImgData(shuffle(imgData));
 
       if (score === 14) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(4);
         setCardNumber(9);
@@ -90,6 +95,7 @@ function App() {
       setImgData(shuffle(imgData));
 
       if (score === 23) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(5);
         setCardNumber(11);
@@ -100,6 +106,7 @@ function App() {
       setImgData(shuffle(imgData));
 
       if (score === 34) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(6);
         setCardNumber(13);
@@ -110,6 +117,7 @@ function App() {
       setImgData(shuffle(imgData));
 
       if (score === 47) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(7);
         setCardNumber(15);
@@ -120,6 +128,7 @@ function App() {
       setImgData(shuffle(imgData));
 
       if (score === 62) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(8);
         setCardNumber(17);
@@ -130,6 +139,7 @@ function App() {
       setImgData(shuffle(imgData));
 
       if (score === 79) {
+        setLoading(true);
         setScoreArr([]);
         setLevel(9);
         setCardNumber(19);
@@ -180,7 +190,12 @@ function App() {
         level={level}
         loadBestScore={loadBestScore}
       />
-      <GameBoard imgData={imgData} handleScore={handleScore} />
+      <GameBoard
+        imgData={imgData}
+        loading={loading}
+        handleScore={handleScore}
+        level={level}
+      />
       <Footer />
     </div>
   );

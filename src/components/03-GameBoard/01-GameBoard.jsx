@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 const GameBoard = (props) => {
-  const { imgData, handleScore } = props;
+  const { imgData, handleScore, loading, level } = props;
 
   const renderedImgData = imgData.map((item) => {
     return (
@@ -18,7 +18,11 @@ const GameBoard = (props) => {
 
   return (
     <div className="game-board">
-      <div className="cards">{renderedImgData}</div>
+      {loading ? (
+        <div className="loading">Loading... Level : {level}</div>
+      ) : (
+        <div className="cards">{renderedImgData}</div>
+      )}
     </div>
   );
 };
